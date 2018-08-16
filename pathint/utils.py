@@ -79,7 +79,7 @@ def extract_weight_changes(weights, update_ops):
 
 
 def compute_updates(opt, loss, weights):
-    update_ops = opt.get_updates(weights, [], loss)
+    update_ops = opt.get_updates(weights, loss)
     deltas, new_update_op = extract_weight_changes(weights, update_ops)
     grads = tf.gradients(loss, weights)
     # Make sure  that deltas are computed _before_ the weight is updated
